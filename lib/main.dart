@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rolanda/src/views/auth/login.dart';
 
 void main() {
-  runApp(const Rolanda());
+  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: Rolanda()));
 }
 
 class Rolanda extends StatelessWidget {
@@ -9,6 +10,8 @@ class Rolanda extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Login(),
+    );
   }
 }
