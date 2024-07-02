@@ -5,3 +5,4 @@ const Color darkBlue = Color(0xFF001D48);
 const Color lightGray = Color(0xFFC8C8C8);
 const Color mediumGray = Color(0xFF878787);
 const Color blackColor = Color(0xFF000000);
+const Color whiteColor = Colors.white;
