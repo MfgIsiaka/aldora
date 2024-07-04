@@ -3,11 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rolanda/src/constants/colors.dart';
 
 class CustomInput extends StatelessWidget {
-  final inputController;
+  final TextEditingController inputController;
   final keyboardType;
-  final obscureText;
+  final bool obscureText;
   final icon;
-  final labelText;
+  final String labelText;
   const CustomInput(
       {super.key,
       required this.inputController,

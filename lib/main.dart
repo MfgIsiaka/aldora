@@ -6,9 +6,26 @@ import 'package:rolanda/src/views/auth/registration.dart';
 import 'package:rolanda/src/views/contact.dart';
 import 'package:rolanda/src/views/profile.dart';
 import 'package:rolanda/src/views/welcome_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: Rolanda()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+
+  runApp(MyMainApp(isFirstLaunch: isFirstLaunch));
+}
+
+class MyMainApp extends StatelessWidget {
+  const MyMainApp({super.key, required this.isFirstLaunch});
+  final bool isFirstLaunch;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: isFirstLaunch ? const Welcome() : const Rolanda(),
+    );
+  }
 }
 
 class Rolanda extends StatefulWidget {

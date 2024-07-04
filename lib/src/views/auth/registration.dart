@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rolanda/src/constants/colors.dart';
-import 'package:rolanda/src/widgets/authButton.dart';
-import 'package:rolanda/src/widgets/bottomAuthNav.dart';
+import 'package:rolanda/src/widgets/auth_button.dart';
+import 'package:rolanda/src/widgets/bottom_authNav.dart';
 import 'package:rolanda/src/widgets/custom_input.dart';
-import 'package:rolanda/src/widgets/socialMediaButtons.dart';
+import 'package:rolanda/src/widgets/social_media_buttons.dart';
 
 class Registration extends StatelessWidget {
   Registration({super.key});

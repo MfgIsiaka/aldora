@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rolanda/src/constants/colors.dart';
 
 class CustomRectangularButton extends StatelessWidget {
-  final text;
+  final String text;
   const CustomRectangularButton({
     super.key,
     required this.text,
@@ -14,7 +14,7 @@ class CustomRectangularButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           width: double.maxFinite,
           decoration: BoxDecoration(
               color: primaryBlue, borderRadius: BorderRadius.circular(4)),

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rolanda/src/constants/colors.dart';
 
 class BottomAuthNav extends StatelessWidget {
-  final text, link;
+  final String text, link;
   const BottomAuthNav({
     super.key,
     required this.text,

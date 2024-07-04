@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rolanda/src/constants/colors.dart';
-import 'package:rolanda/src/widgets/authButton.dart';
+import 'package:rolanda/src/widgets/auth_button.dart';
 
 class ContactUs extends StatelessWidget {
   ContactUs({super.key});
