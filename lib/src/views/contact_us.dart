@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rolanda/src/constants/colors.dart';
+import 'package:rolanda/src/views/about_us.dart';
 import 'package:rolanda/src/widgets/auth_button.dart';
 
 class ContactUs extends StatelessWidget {
   ContactUs({super.key});
   final emailController = TextEditingController();
+  final subjectController = TextEditingController();
+  final messageController = TextEditingController();
+
+  void _toAboutPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const AboutUs()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        margin: const EdgeInsets.only(left: 15, right: 15, top: 66),
+        margin: const EdgeInsets.only(left: 25, right: 25, top: 66),
         alignment: Alignment.topCenter,
         child: Column(
           children: [
@@ -18,8 +27,8 @@ class ContactUs extends StatelessWidget {
               "Contact us now",
               style: GoogleFonts.poppins(
                 color: darkBlue,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -136,13 +145,16 @@ class ContactUs extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            Text(
-              "See all about us",
-              style: GoogleFonts.poppins(
-                fontSize: 18,
-                decoration: TextDecoration.underline,
-                color: primaryBlue,
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () => _toAboutPage(context),
+              child: Text(
+                "See all about us",
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  decoration: TextDecoration.underline,
+                  color: primaryBlue,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             )
           ],

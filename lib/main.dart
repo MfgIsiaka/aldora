@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rolanda/src/constants/colors.dart';
 import 'package:rolanda/src/views/auth/login.dart';
 import 'package:rolanda/src/views/auth/registration.dart';
-import 'package:rolanda/src/views/contact.dart';
+import 'package:rolanda/src/views/contact_us.dart';
 import 'package:rolanda/src/views/profile.dart';
 import 'package:rolanda/src/views/welcome_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
