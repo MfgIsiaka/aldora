@@ -82,39 +82,36 @@ class _RolandaState extends State<Rolanda> {
         padding: const EdgeInsets.symmetric(horizontal: 2),
         child: _pages[_currentPage],
       )),
-      bottomNavigationBar: Container(
-        //color: mediumGray,
-        child: DotCurvedBottomNav(
-            margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-            backgroundColor: blackColor,
-            indicatorColor: primaryBlue,
-            animationDuration: const Duration(milliseconds: 600),
-            animationCurve: Curves.ease,
-            selectedIndex: _currentPage,
-            onTap: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            items: [
-              Icon(
-                Icons.home,
-                color: _currentPage == 0 ? primaryBlue : whiteColor,
-              ),
-              Icon(
-                Icons.message,
-                color: _currentPage == 1 ? primaryBlue : whiteColor,
-              ),
-              Icon(
-                Icons.call_outlined,
-                color: _currentPage == 2 ? primaryBlue : whiteColor,
-              ),
-              Icon(
-                Icons.person_2_outlined,
-                color: _currentPage == 3 ? primaryBlue : whiteColor,
-              ),
-            ]),
-      ),
+      bottomNavigationBar: DotCurvedBottomNav(
+          margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+          backgroundColor: blackColor,
+          indicatorColor: primaryBlue,
+          animationDuration: const Duration(milliseconds: 600),
+          animationCurve: Curves.ease,
+          selectedIndex: _currentPage,
+          onTap: (index) {
+            setState(() {
+              _currentPage = index;
+            });
+          },
+          items: [
+            Icon(
+              Icons.home,
+              color: _currentPage == 0 ? primaryBlue : whiteColor,
+            ),
+            Icon(
+              Icons.message,
+              color: _currentPage == 1 ? primaryBlue : whiteColor,
+            ),
+            Icon(
+              Icons.call_outlined,
+              color: _currentPage == 2 ? primaryBlue : whiteColor,
+            ),
+            Icon(
+              Icons.person_2_outlined,
+              color: _currentPage == 3 ? primaryBlue : whiteColor,
+            ),
+          ]),
     );
   }
 }

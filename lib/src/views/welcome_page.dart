@@ -24,6 +24,7 @@ class Welcome extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
     return Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned.fill(
             child: Image.asset(
@@ -32,7 +33,6 @@ class Welcome extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 100,
             top: 180,
             child: Column(
               children: [

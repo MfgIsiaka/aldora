@@ -30,7 +30,11 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.6
   dot_curved_bottom_nav: ^0.0.2
+  custom_rating_bar: ^2.0.5
+  font_awesome_flutter:
   skeletonizer: 
+  rich_readmore: ^1.1.1
+
 
   flutter:
     sdk: flutter

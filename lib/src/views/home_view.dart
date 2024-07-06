@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rolanda/main.dart';
+import 'package:rolanda/src/actions/common_actions.dart';
 import 'package:rolanda/src/constants/base_styles.dart';
 import 'package:rolanda/src/constants/colors.dart';
 import 'package:rolanda/src/models/models.dart';
+import 'package:rolanda/src/views/hotel_details_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeView extends StatefulWidget {
@@ -283,45 +285,69 @@ class _HomeViewState extends State<HomeView> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               Hotel hotel = _hotels[index];
-                              return Skeletonizer(
-                                enabled: _loading,
-                                containersColor: lightGray,
-                                child: Stack(
-                                  alignment: Alignment.bottomLeft,
-                                  children: [
-                                    Container(
-                                      width: (16 / 9) * 130,
-                                      margin: EdgeInsets.only(
-                                          right: 5, bottom: 2, top: 2, left: 2),
-                                      decoration: BoxDecoration(
-                                          color: whiteColor,
-                                          boxShadow: [BoxShadow(blurRadius: 3)],
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                  'assets/hotel_images/${index + 1}.jpg'))),
-                                      child: null,
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                              return GestureDetector(
+                                onTap: _loading
+                                    ? () {}
+                                    : () => commonActions.shiftPage(
+                                        context, HotelDetailsPage(hotel)),
+                                child: AbsorbPointer(
+                                  child: Skeletonizer(
+                                    enabled: _loading,
+                                    containersColor: lightGray,
+                                    child: Stack(
+                                      alignment: Alignment.bottomLeft,
                                       children: [
-                                        Text(
-                                          hotel.title,
-                                          style: baseTxtStyle.copyWith(
-                                              color: whiteColor),
+                                        Container(
+                                          width: (16 / 9) * 130,
+                                          margin: EdgeInsets.only(
+                                              right: 5,
+                                              bottom: 2,
+                                              top: 2,
+                                              left: 2),
+                                          decoration: BoxDecoration(
+                                              color: whiteColor,
+                                              boxShadow: [
+                                                BoxShadow(blurRadius: 3)
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: _loading
+                                                  ? null
+                                                  : DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(
+                                                          'assets/hotel_images/${index + 1}.jpg'))),
+                                          child: null,
                                         ),
-                                        Text(
-                                          "Tsh${hotel.price}/=",
-                                          style: baseTxtStyle.copyWith(
-                                              color: whiteColor),
+                                        Container(
+                                          width: (16 / 9) * 130 * 0.7,
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4, vertical: 3),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                hotel.title,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: baseTxtStyle.copyWith(
+                                                    color: whiteColor),
+                                              ),
+                                              Text(
+                                                "Tsh${hotel.price}/=",
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: baseTxtStyle.copyWith(
+                                                    color: whiteColor),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
-                                  ],
+                                  ),
                                 ),
                               );
                             }),
@@ -365,69 +391,79 @@ class _HomeViewState extends State<HomeView> {
                   itemBuilder: (context, index) {
                     int ind = _hotels.length - index;
                     Hotel hotel = _hotels[index];
-                    return Skeletonizer(
-                      enabled: _loading ? true : false,
-                      containersColor: lightGray,
-                      child: Container(
-                        margin: EdgeInsets.only(bottom: 5, left: 2, right: 2),
-                        padding: EdgeInsets.all(2),
-                        height: 130,
-                        decoration: BoxDecoration(
-                          color: whiteColor,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [BoxShadow(blurRadius: 2)],
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 1.4 * 130,
-                              height: 130,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'assets/hotel_images/${ind}.jpg'))),
+                    return GestureDetector(
+                      onTap: _loading
+                          ? () {}
+                          : () => commonActions.shiftPage(
+                              context, HotelDetailsPage(hotel)),
+                      child: AbsorbPointer(
+                        child: Skeletonizer(
+                          enabled: _loading ? true : false,
+                          containersColor: lightGray,
+                          child: Container(
+                            margin:
+                                EdgeInsets.only(bottom: 5, left: 2, right: 2),
+                            padding: EdgeInsets.all(2),
+                            height: 130,
+                            decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [BoxShadow(blurRadius: 2)],
                             ),
-                            Expanded(
-                              child: SizedBox.expand(
-                                child: Container(
-                                  padding: EdgeInsets.all(3),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        hotel.title,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Row(
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 1.4 * 130,
+                                  height: 130,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              'assets/hotel_images/${ind}.jpg'))),
+                                ),
+                                Expanded(
+                                  child: SizedBox.expand(
+                                    child: Container(
+                                      padding: EdgeInsets.all(3),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Icon(Icons.location_on),
-                                          Expanded(
-                                            child: Text(
-                                              hotel.street,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
+                                          Text(
+                                            hotel.title,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(Icons.location_on),
+                                              Expanded(
+                                                child: Text(
+                                                  hotel.street,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Spacer(),
+                                          Text(
+                                            "Tsh${hotel.price}/=",
+                                            style: baseTxtStyle.copyWith(
+                                                color: primaryBlue),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ],
                                       ),
-                                      Spacer(),
-                                      Text(
-                                        "Tsh${hotel.price}/=",
-                                        style: baseTxtStyle.copyWith(
-                                            color: primaryBlue),
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                            )
-                          ],
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     );
