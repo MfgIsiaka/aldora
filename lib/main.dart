@@ -4,6 +4,7 @@ import 'package:rolanda/src/constants/colors.dart';
 import 'package:rolanda/src/views/auth/login.dart';
 import 'package:rolanda/src/views/auth/registration.dart';
 import 'package:rolanda/src/views/contact_us.dart';
+import 'package:rolanda/src/views/home_view.dart';
 import 'package:rolanda/src/views/profile.dart';
 import 'package:rolanda/src/views/welcome_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,13 +17,39 @@ void main() async {
   runApp(MyMainApp(isFirstLaunch: isFirstLaunch));
 }
 
+late TextTheme textTheme;
+late Size screenSize;
+
 class MyMainApp extends StatelessWidget {
   const MyMainApp({super.key, required this.isFirstLaunch});
   final bool isFirstLaunch;
   @override
   Widget build(BuildContext context) {
+    screenSize = MediaQuery.of(context).size;
+    textTheme = Theme.of(context).textTheme;
+    const MaterialColor colorPrimarySwatch = MaterialColor(
+      0xFF5177FF,
+      <int, Color>{
+        50: Color(0xFF5177FF),
+        100: Color(0xFF5177FF),
+        200: Color(0xFF5177FF),
+        300: Color(0xFF5177FF),
+        400: Color(0xFF5177FF),
+        500: Color(0xFF5177FF),
+        600: Color(0xFF5177FF),
+        700: Color(0xFF5177FF),
+        800: Color(0xFF5177FF),
+        900: Color(0xFF5177FF),
+      },
+    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.light().copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          primary: colorPrimarySwatch, // Set your desired red color here
+          seedColor: colorPrimarySwatch,
+        ),
+      ),
       home: isFirstLaunch ? const Welcome() : const Rolanda(),
     );
   }
@@ -39,7 +66,8 @@ class _RolandaState extends State<Rolanda> {
   int _currentPage = 0;
 
   final List<Widget> _pages = [
-    const Login(),
+    //const Login(),
+    const HomeView(),
     Registration(),
     ContactUs(),
     const Profile(),
@@ -47,10 +75,17 @@ class _RolandaState extends State<Rolanda> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: _pages[_currentPage],
-        bottomNavigationBar: DotCurvedBottomNav(
+    return Scaffold(
+      //backgroundColor: primaryBlue,
+      body: SafeArea(
+          child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: _pages[_currentPage],
+      )),
+      bottomNavigationBar: Container(
+        //color: mediumGray,
+        child: DotCurvedBottomNav(
+            margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
             backgroundColor: blackColor,
             indicatorColor: primaryBlue,
             animationDuration: const Duration(milliseconds: 600),

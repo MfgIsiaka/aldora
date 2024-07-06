@@ -9,6 +9,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
           Positioned(
             top: 0,
@@ -34,7 +35,6 @@ class Profile extends StatelessWidget {
           ),
           const Positioned(
             top: 80,
-            left: 165,
             child: CircleAvatar(
               backgroundColor: darkBlue,
               radius: 77,
@@ -53,7 +53,8 @@ class Profile extends StatelessWidget {
               children: [
                 TextField(
                   decoration: InputDecoration(
-                      border: const OutlineInputBorder(borderSide: BorderSide.none),
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "Full Name",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -69,7 +70,8 @@ class Profile extends StatelessWidget {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      border: const OutlineInputBorder(borderSide: BorderSide.none),
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "isayaosward@gmail.com",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -86,7 +88,8 @@ class Profile extends StatelessWidget {
                 TextField(
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
-                      border: const OutlineInputBorder(borderSide: BorderSide.none),
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "+255 755 957 514",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -102,7 +105,8 @@ class Profile extends StatelessWidget {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      border: const OutlineInputBorder(borderSide: BorderSide.none),
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "Dodoma, Tanzania",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -118,7 +122,8 @@ class Profile extends StatelessWidget {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      border: const OutlineInputBorder(borderSide: BorderSide.none),
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "NIDA",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -147,20 +152,21 @@ class Profile extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: const ButtonStyle(
-                      padding: WidgetStatePropertyAll(
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 145)),
-                      foregroundColor: WidgetStatePropertyAll(whiteColor),
-                      backgroundColor: WidgetStatePropertyAll(darkBlue),
-                    ),
-                    child: Text(
-                      "Change password",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.poppins(),
-                    ))
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: const ButtonStyle(
+                        foregroundColor: WidgetStatePropertyAll(whiteColor),
+                        backgroundColor: WidgetStatePropertyAll(darkBlue),
+                      ),
+                      child: Text(
+                        "Change password",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(),
+                      )),
+                )
               ],
             ),
           ),
