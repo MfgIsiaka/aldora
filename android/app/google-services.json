@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "404710439736",
+    "firebase_url": "https://iwms-2ff58-default-rtdb.firebaseio.com",
+    "project_id": "iwms-2ff58",
+    "storage_bucket": "iwms-2ff58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404710439736:android:ce32dc4a713accd8b01fcd",
+        "android_client_info": {
+          "package_name": "com.example.iwm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmUKyGVY5V6yvDy0iVsTG7ec4uy-BDOTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
