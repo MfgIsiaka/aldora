@@ -7,6 +7,7 @@ import 'package:rolanda/src/actions/common_actions.dart';
 import 'package:rolanda/src/constants/base_styles.dart';
 import 'package:rolanda/src/constants/colors.dart';
 import 'package:rolanda/src/models/models.dart';
+import 'package:rolanda/src/views/hotel_mapview_page.dart';
 import 'package:rolanda/src/views/images_view_page.dart';
 
 class HotelDetailsPage extends StatefulWidget {
@@ -129,7 +130,10 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                                             maxRating: 5,
                                           ),
                                           trailing: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                commonActions.shiftPage(context,
+                                                    HotelMapviewPage());
+                                              },
                                               icon: Icon(
                                                 Icons.location_on,
                                                 size: 35,

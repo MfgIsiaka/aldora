@@ -45,6 +45,9 @@ class MyMainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: primaryBlue, foregroundColor: whiteColor)),
         colorScheme: ColorScheme.fromSeed(
           primary: colorPrimarySwatch, // Set your desired red color here
           seedColor: colorPrimarySwatch,

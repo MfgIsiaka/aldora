@@ -8,3 +8,4 @@ const Color blackColor = Color(0xFF000000);
 const Color whiteColor = Colors.white;
 const Color bottomNavColor = Color(0xFFECECEC);
 const Color lightBlue = Colors.lightBlue;
+const Color redColor = Colors.red;
