@@ -4,6 +4,7 @@ import 'package:rolanda/src/actions/common_actions.dart';
 import 'package:rolanda/src/constants/base_styles.dart';
 import 'package:rolanda/src/constants/colors.dart';
 import 'package:rolanda/src/models/models.dart';
+import 'package:rolanda/src/views/common_views/hotel_list_view.dart';
 import 'package:rolanda/src/views/hotel_details_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -15,78 +16,11 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final _scrollController = ScrollController();
   bool _loading = true;
   List<String> _catecogories = ["All", "Hotel", "Lodge", "Apartment"];
   int _currentCategory = 0;
   int lastHotel = 10;
-  List<Hotel> _hotels = [
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-    Hotel(
-        title: "Nice apartment at palm village",
-        street: "Mwai Kibaki Rd, Mikocheni",
-        district: "Kinondoni",
-        region: 'dar es salaam',
-        price: 5000000),
-  ];
 
   void _initLoading() {
     setState(() {
@@ -134,6 +68,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           Expanded(
               child: CustomScrollView(
+            controller: _scrollController,
             slivers: [
               SliverToBoxAdapter(
                 child: Container(
@@ -209,24 +144,13 @@ class _HomeViewState extends State<HomeView> {
                                       duration: Duration(milliseconds: 300),
                                       margin: EdgeInsets.only(right: 10),
                                       decoration: BoxDecoration(
-                                          //color: ind == 0 ? lightBlue : lightGray,
-                                          boxShadow: [
-                                            BoxShadow(blurRadius: 2)
-                                          ],
-                                          borderRadius: BorderRadius.circular(
-                                              ind == _currentCategory
-                                                  ? 10
-                                                  : 50),
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                              colors: ind == _currentCategory
-                                                  ? [
-                                                      lightBlue,
-                                                      Colors.pink,
-                                                      Colors.purple
-                                                    ]
-                                                  : [whiteColor, whiteColor])),
+                                        color: ind == _currentCategory
+                                            ? darkBlue
+                                            : lightGray,
+                                        boxShadow: [BoxShadow(blurRadius: 2)],
+                                        borderRadius: BorderRadius.circular(
+                                            ind == _currentCategory ? 10 : 50),
+                                      ),
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 10),
                                       child: Center(
@@ -235,7 +159,7 @@ class _HomeViewState extends State<HomeView> {
                                         style: TextStyle(
                                             color: ind == _currentCategory
                                                 ? whiteColor
-                                                : blackColor,
+                                                : Colors.black45,
                                             fontWeight: FontWeight.bold),
                                       )),
                                     ),
@@ -281,10 +205,10 @@ class _HomeViewState extends State<HomeView> {
                       SizedBox(
                         height: 134,
                         child: ListView.builder(
-                            itemCount: _hotels.length,
+                            itemCount: hotels.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              Hotel hotel = _hotels[index];
+                              Hotel hotel = hotels[index];
                               return GestureDetector(
                                 onTap: _loading
                                     ? () {}
@@ -386,88 +310,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ],
               )),
-              SliverList.builder(
-                  itemCount: _hotels.length,
-                  itemBuilder: (context, index) {
-                    int ind = _hotels.length - index;
-                    Hotel hotel = _hotels[index];
-                    return GestureDetector(
-                      onTap: _loading
-                          ? () {}
-                          : () => commonActions.shiftPage(
-                              context, HotelDetailsPage(hotel)),
-                      child: AbsorbPointer(
-                        child: Skeletonizer(
-                          enabled: _loading ? true : false,
-                          containersColor: lightGray,
-                          child: Container(
-                            margin:
-                                EdgeInsets.only(bottom: 5, left: 2, right: 2),
-                            padding: EdgeInsets.all(2),
-                            height: 130,
-                            decoration: BoxDecoration(
-                              color: whiteColor,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [BoxShadow(blurRadius: 2)],
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 1.4 * 130,
-                                  height: 130,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'assets/hotel_images/${ind}.jpg'))),
-                                ),
-                                Expanded(
-                                  child: SizedBox.expand(
-                                    child: Container(
-                                      padding: EdgeInsets.all(3),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            hotel.title,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.location_on),
-                                              Expanded(
-                                                child: Text(
-                                                  hotel.street,
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Spacer(),
-                                          Text(
-                                            "Tsh${hotel.price}/=",
-                                            style: baseTxtStyle.copyWith(
-                                                color: primaryBlue),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  })
+              HotelListView(_loading, _scrollController)
             ],
           ))
         ],

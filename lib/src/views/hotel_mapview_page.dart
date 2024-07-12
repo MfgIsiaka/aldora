@@ -56,6 +56,9 @@ class _HotelMapviewPageState extends State<HotelMapviewPage> {
             roadColor: redColor,
           ));
     });
+    await _mapController.changeTileLayer(
+        tileLayer:
+            CustomTile(urlsServers: [], tileExtension: 'jpg', sourceName: ""));
   }
 
   @override

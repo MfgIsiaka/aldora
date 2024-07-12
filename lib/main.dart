@@ -45,11 +45,12 @@ class MyMainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
+        canvasColor: Colors.transparent,
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
                 backgroundColor: primaryBlue, foregroundColor: whiteColor)),
         colorScheme: ColorScheme.fromSeed(
-          primary: colorPrimarySwatch, // Set your desired red color here
+          primary: colorPrimarySwatch,
           seedColor: colorPrimarySwatch,
         ),
       ),
@@ -66,6 +67,7 @@ class Rolanda extends StatefulWidget {
 }
 
 class _RolandaState extends State<Rolanda> {
+  final _pageController = PageController();
   int _currentPage = 0;
 
   final List<Widget> _pages = [
@@ -79,42 +81,91 @@ class _RolandaState extends State<Rolanda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: primaryBlue,
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: _pages[_currentPage],
-      )),
-      bottomNavigationBar: DotCurvedBottomNav(
-          margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-          backgroundColor: blackColor,
-          indicatorColor: primaryBlue,
-          animationDuration: const Duration(milliseconds: 600),
-          animationCurve: Curves.ease,
-          selectedIndex: _currentPage,
-          onTap: (index) {
-            setState(() {
-              _currentPage = index;
-            });
-          },
-          items: [
-            Icon(
-              Icons.home,
-              color: _currentPage == 0 ? primaryBlue : whiteColor,
-            ),
-            Icon(
-              Icons.message,
-              color: _currentPage == 1 ? primaryBlue : whiteColor,
-            ),
-            Icon(
-              Icons.call_outlined,
-              color: _currentPage == 2 ? primaryBlue : whiteColor,
-            ),
-            Icon(
-              Icons.person_2_outlined,
-              color: _currentPage == 3 ? primaryBlue : whiteColor,
-            ),
-          ]),
+              padding: const EdgeInsets.symmetric(horizontal: 2),
+              child: _pages[_currentPage])),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+            //color: redColor,
+            boxShadow: [BoxShadow(color: blackColor, blurRadius: 3)],
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          child: BottomNavigationBar(
+              onTap: (index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              backgroundColor: Colors.white,
+              type: BottomNavigationBarType.fixed,
+              items: [
+                BottomNavigationBarItem(
+                  label: '',
+                  icon: Icon(
+                    Icons.home,
+                    color: _currentPage == 0 ? primaryBlue : blackColor,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: '',
+                  icon: Icon(
+                    Icons.message,
+                    color: _currentPage == 1 ? primaryBlue : blackColor,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: '',
+                  icon: Icon(
+                    Icons.call_outlined,
+                    color: _currentPage == 2 ? primaryBlue : blackColor,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: '',
+                  icon: Icon(
+                    Icons.person_2_outlined,
+                    color: _currentPage == 3 ? primaryBlue : blackColor,
+                  ),
+                )
+              ]),
+        ),
+      ),
+      // bottomNavigationBar: DotCurvedBottomNav(
+      //     margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+      //     backgroundColor: blackColor,
+      //     indicatorColor: primaryBlue,
+      //     animationDuration: const Duration(milliseconds: 600),
+      //     animationCurve: Curves.ease,
+      //     selectedIndex: _currentPage,
+      // onTap: (index) {
+      //   setState(() {
+      //     _currentPage = index;
+      //   });
+      // },
+      // items: [
+      // Icon(
+      //   Icons.home,
+      //   color: _currentPage == 0 ? primaryBlue : whiteColor,
+      // ),
+      // Icon(
+      //   Icons.message,
+      //   color: _currentPage == 1 ? primaryBlue : whiteColor,
+      // ),
+      // Icon(
+      //   Icons.call_outlined,
+      //   color: _currentPage == 2 ? primaryBlue : whiteColor,
+      // ),
+      // Icon(
+      //   Icons.person_2_outlined,
+      //   color: _currentPage == 3 ? primaryBlue : whiteColor,
+      // ),
+      //     ]),
     );
   }
 }

@@ -12,3 +12,72 @@ class Hotel {
       required this.region,
       required this.price});
 }
+
+List<Hotel> hotels = [
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+  Hotel(
+      title: "Nice apartment at palm village",
+      street: "Mwai Kibaki Rd, Mikocheni",
+      district: "Kinondoni",
+      region: 'dar es salaam',
+      price: 5000000),
+];
