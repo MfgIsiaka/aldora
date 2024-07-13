@@ -108,7 +108,10 @@ class Registration extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const BottomAuthNav(text: "Already have an Account", link: "Sign In")
+          const BottomAuthNav(text: "Already have an Account", link: "Sign In"),
+          const SizedBox(
+            height: 20,
+          ),
         ],
       )),
     );

@@ -81,10 +81,9 @@ class _RolandaState extends State<Rolanda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 2),
-              child: _pages[_currentPage])),
+      body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2),
+          child: _pages[_currentPage]),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
             //color: redColor,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rolanda/main.dart';
 import 'package:rolanda/src/constants/colors.dart';
 
 class Profile extends StatelessWidget {
@@ -8,54 +10,62 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Stack(
-        alignment: Alignment.bottomCenter,
+      child: Column(
         children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 40),
-              alignment: Alignment.topCenter,
-              height: 180,
-              decoration: const BoxDecoration(
-                color: primaryBlue,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(150),
-                  bottomLeft: Radius.circular(150),
+          Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                alignment: Alignment.topCenter,
+                height: 140,
+                decoration: const BoxDecoration(
+                  color: primaryBlue,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(90),
+                    bottomLeft: Radius.circular(90),
+                  ),
                 ),
               ),
-              child: Text(
-                "Isaya Osward",
-                style: GoogleFonts.poppins(
-                    color: whiteColor, fontWeight: FontWeight.bold),
+              Positioned(
+                top: 60,
+                child: Column(
+                  children: [
+                    Text(
+                      "Isaya Osward",
+                      style: GoogleFonts.poppins(
+                          color: whiteColor, fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      height: 130,
+                      width: 130,
+                      decoration: BoxDecoration(
+                          color: whiteColor,
+                          borderRadius: BorderRadius.circular(100),
+                          image: DecorationImage(
+                              image: AssetImage("assets/icons/profile.jpg"),
+                              fit: BoxFit.cover)),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-          const Positioned(
-            top: 80,
-            child: CircleAvatar(
-              backgroundColor: darkBlue,
-              radius: 77,
-              child: CircleAvatar(
-                radius: 74,
-                backgroundImage: AssetImage("assets/icons/user.png"),
-              ),
-            ),
+            ],
           ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 250, horizontal: 20),
+            margin: const EdgeInsets.only(top: 100, left: 20, right: 20),
             decoration: BoxDecoration(
+              color: whiteColor,
+              boxShadow: [BoxShadow(blurRadius: 5)],
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
               children: [
                 TextField(
                   decoration: InputDecoration(
-                      border:
-                          const OutlineInputBorder(borderSide: BorderSide.none),
-                      hintText: "Full Name",
+                      hintText: "Isaya Osward",
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
                       ),
@@ -64,15 +74,11 @@ class Profile extends StatelessWidget {
                         color: lightBlue,
                       )),
                 ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
                 TextField(
                   decoration: InputDecoration(
-                      border:
-                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "isayaosward@gmail.com",
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
                       ),
@@ -81,15 +87,9 @@ class Profile extends StatelessWidget {
                         color: lightBlue,
                       )),
                 ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
                 TextField(
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
-                      border:
-                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "+255 755 957 514",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -99,15 +99,11 @@ class Profile extends StatelessWidget {
                         color: lightBlue,
                       )),
                 ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
                 TextField(
                   decoration: InputDecoration(
-                      border:
-                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "Dodoma, Tanzania",
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
                       ),
@@ -116,14 +112,8 @@ class Profile extends StatelessWidget {
                         color: lightBlue,
                       )),
                 ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
                 TextField(
                   decoration: InputDecoration(
-                      border:
-                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "NIDA",
                       hintStyle: GoogleFonts.poppins(
                         color: mediumGray,
@@ -133,27 +123,37 @@ class Profile extends StatelessWidget {
                         color: lightBlue,
                       )),
                 ),
-                const Divider(),
-                const SizedBox(
-                  height: 30,
+                SizedBox(
+                  height: 5,
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: screenSize.width,
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: const ButtonStyle(
+                        foregroundColor: WidgetStatePropertyAll(whiteColor),
+                        backgroundColor: WidgetStatePropertyAll(primaryBlue),
+                      ),
+                      child: Text(
+                        "Edit Profile",
+                        style: GoogleFonts.poppins(),
+                      )),
                 ),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: const ButtonStyle(
-                      padding: WidgetStatePropertyAll(
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 170)),
-                      foregroundColor: WidgetStatePropertyAll(whiteColor),
-                      backgroundColor: WidgetStatePropertyAll(primaryBlue),
-                    ),
-                    child: Text(
-                      "Edit Profile",
-                      style: GoogleFonts.poppins(),
-                    )),
                 const SizedBox(
                   height: 10,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: screenSize.width,
                   child: ElevatedButton(
                       onPressed: () {},
                       style: const ButtonStyle(
@@ -169,7 +169,7 @@ class Profile extends StatelessWidget {
                 )
               ],
             ),
-          ),
+          )
         ],
       ),
     );
